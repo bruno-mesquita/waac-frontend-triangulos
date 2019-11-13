@@ -1,7 +1,10 @@
 import React from 'react';
 
+// Routes
+import Routes from './routes';
+
 function App() {
-  return <h1>Waac</h1>;
+  return <Routes />;
 }
 
 export default App;

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 
 import { FaPlus } from 'react-icons/fa';
-import Line from '../../components/Line';
+import { Input } from '@material-ui/core';
 import {
   Container,
   Paper,
@@ -14,14 +14,20 @@ import {
 
 export default function Home() {
   // States
-  const [lines, setLines] = useState([[6], [3, 5], [9, 7, 1], [4, 6, 8, 4]]);
+  const [matriz, setMatriz] = useState([[6], [3, 5], [9, 7, 1], [4, 6, 8, 4]]);
 
   // Add Line
-  const handleAdd = useCallback(() => {
-    setLines([...lines, []]);
-  }, [lines]);
+  const handleAddLine = useCallback(() => {
+    setMatriz([...matriz, []]);
+  }, [matriz]);
 
-  console.log(lines);
+  // Test
+  const handleMatriz = useCallback(e => {
+    const { value } = e.target;
+    console.log(value);
+    const array = value.split('').map(item => Number(item));
+    console.log(array);
+  });
 
   return (
     <Container>
@@ -35,13 +41,13 @@ export default function Home() {
           </p>
           <p>
             Exemplo: [[6],[3,5],[9,7,1],[4,6,8,4]], cada posição da matriz deve
-            ser inserida em uma linha.
+            ser inserida em cada linha.
           </p>
           <div>
-            {lines.map((e, i) => (
-              <Line key={e} label={`Linha ${i + 1}`} placeholder={e} />
+            {matriz.map((element, index) => (
+              <Input key={element[0]} placeholder={element} onChange={handleMatriz}/>
             ))}
-            <BtnAdd variant="contained" onClick={handleAdd}>
+            <BtnAdd variant="contained" onClick={handleAddLine} >
               <FaPlus color="black" size={20} />
             </BtnAdd>
           </div>
@@ -52,13 +58,13 @@ export default function Home() {
         </Entrada>
         <Saida>
           <h2>Resultado</h2>
-          {lines.map(item => (
-            <Triangulo>
-              {item.map(i => (
-                <span>{i}</span>
-              ))}
-            </Triangulo>
-          ))}
+          {matriz.map(item => (
+              <Triangulo>
+                {item.map(i => (
+                  <span key={i}>{i}</span>
+                ))}
+              </Triangulo>
+            ))}
           <span>Tempo de Execução: 2.4ms</span>
           <span>Soma: 26</span>
         </Saida>

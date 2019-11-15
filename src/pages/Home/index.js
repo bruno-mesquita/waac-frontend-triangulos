@@ -22,14 +22,15 @@ export default function Home() {
   }, [matriz]);
 
   // Test
-  const handleMatriz = useCallback((evt, e, pos) => {
-    const { value } = evt.target;
-    const array = value.split('').map(item => Number(item));
-    matriz.splice(pos,1,array)
-    setMatriz(matriz)
-    console.log(array);
-    console.log(matriz);
-  }, [matriz]);
+  const handleMatriz = useCallback(
+    (evt, e, pos) => {
+      const { value } = evt.target;
+      const array = value.split('').map(item => Number(item));
+      matriz.splice(pos, 1, array);
+      setMatriz(matriz);
+    },
+    [matriz]
+  );
 
   return (
     <Container>
@@ -47,10 +48,14 @@ export default function Home() {
           </p>
           <div>
             {matriz.map((element, index) => (
-              <Input key={element[0]} placeholder={element} onChange={e => handleMatriz(e, element, index)}/>
+              <Input
+                key={element[0]}
+                placeholder={element}
+                onChange={e => handleMatriz(e, element, index)}
+              />
             ))}
-            <BtnAdd variant="contained" type='button' onClick={handleAddLine} >
-              <FaPlus color="black" size={20} />
+            <BtnAdd variant="contained" type="button" onClick={handleAddLine}>
+              <FaPlus color="black" size={14} />
             </BtnAdd>
           </div>
 
@@ -61,12 +66,12 @@ export default function Home() {
         <Saida>
           <h2>Resultado</h2>
           {matriz.map(item => (
-              <Triangulo>
-                {item.map(i => (
-                  <span key={i}>{i}</span>
-                ))}
-              </Triangulo>
-            ))}
+            <Triangulo>
+              {item.map(i => (
+                <span key={i}>{i}</span>
+              ))}
+            </Triangulo>
+          ))}
           <span>Tempo de Execução: 2.4ms</span>
           <span>Soma: 26</span>
         </Saida>

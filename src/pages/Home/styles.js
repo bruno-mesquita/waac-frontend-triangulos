@@ -70,8 +70,8 @@ export const Saida = styled.div`
 `;
 
 export const BtnAdd = styled(Button)`
-  height: 35px;
-  width: 30px;
+  height: 25px;
+  margin: 10px;
 `;
 
 export const Btn = styled(Button)`

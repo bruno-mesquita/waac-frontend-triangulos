@@ -27,7 +27,7 @@ export const Paper = styled.div`
   border-color: #d3d3d3;
 `;
 
-export const Entrada = styled.div`
+export const Entrada = styled.form`
   display: flex;
   flex-direction: column;
   width: 50%;

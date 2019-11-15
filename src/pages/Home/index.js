@@ -47,12 +47,12 @@ export default function Home() {
             {matriz.map((element, index) => (
               <Input key={element[0]} placeholder={element} onChange={handleMatriz}/>
             ))}
-            <BtnAdd variant="contained" onClick={handleAddLine} >
+            <BtnAdd variant="contained" type='button' onClick={handleAddLine} >
               <FaPlus color="black" size={20} />
             </BtnAdd>
           </div>
 
-          <Btn variant="contained" color="primary">
+          <Btn variant="contained" color="primary" type="submit">
             Calcular
           </Btn>
         </Entrada>

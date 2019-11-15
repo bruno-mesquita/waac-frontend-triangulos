@@ -2,7 +2,15 @@ import React, { useState, useCallback } from 'react';
 
 import { FaPlus } from 'react-icons/fa';
 import Line from '../../components/Line';
-import { Container, Paper, Entrada, Saida, Btn, BtnAdd } from './styles';
+import {
+  Container,
+  Paper,
+  Entrada,
+  Saida,
+  Btn,
+  BtnAdd,
+  Triangulo,
+} from './styles';
 
 export default function Home() {
   // States
@@ -26,7 +34,7 @@ export default function Home() {
             cima para baixo.
           </p>
           <p>
-            Exemplo: [[6],[3,5],[9,7,1],[4,6,8,4]], cada prosição da matriz deve
+            Exemplo: [[6],[3,5],[9,7,1],[4,6,8,4]], cada posição da matriz deve
             ser inserida em uma linha.
           </p>
           <div>
@@ -43,7 +51,16 @@ export default function Home() {
           </Btn>
         </Entrada>
         <Saida>
-          <h1>Resultado</h1>
+          <h2>Resultado</h2>
+          {lines.map(item => (
+            <Triangulo>
+              {item.map(i => (
+                <span>{i}</span>
+              ))}
+            </Triangulo>
+          ))}
+          <span>Tempo de Execução: 2.4ms</span>
+          <span>Soma: 26</span>
         </Saida>
       </Paper>
     </Container>

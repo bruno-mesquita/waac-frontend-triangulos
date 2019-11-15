@@ -35,7 +35,7 @@ export const Entrada = styled.div`
   h2 {
     font-size: 30px;
     align-self: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   p {
@@ -52,6 +52,21 @@ export const Saida = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
+
+  h2 {
+    font-size: 30px;
+    align-self: center;
+    margin-bottom: 20px;
+  }
+
+  span {
+    align-self: center;
+    margin: 10px;
+  }
+
+  div {
+    align-self: center;
+  }
 `;
 
 export const BtnAdd = styled(Button)`
@@ -62,4 +77,14 @@ export const BtnAdd = styled(Button)`
 export const Btn = styled(Button)`
   width: 100px;
   align-self: center;
+`;
+
+export const Triangulo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    margin: 15px 15px 15px 23px;
+  }
 `;

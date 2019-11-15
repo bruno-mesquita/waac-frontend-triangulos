@@ -22,12 +22,14 @@ export default function Home() {
   }, [matriz]);
 
   // Test
-  const handleMatriz = useCallback(e => {
-    const { value } = e.target;
-    console.log(value);
+  const handleMatriz = useCallback((evt, e, pos) => {
+    const { value } = evt.target;
     const array = value.split('').map(item => Number(item));
+    matriz.splice(pos,1,array)
+    setMatriz(matriz)
     console.log(array);
-  });
+    console.log(matriz);
+  }, [matriz]);
 
   return (
     <Container>
@@ -45,7 +47,7 @@ export default function Home() {
           </p>
           <div>
             {matriz.map((element, index) => (
-              <Input key={element[0]} placeholder={element} onChange={handleMatriz}/>
+              <Input key={element[0]} placeholder={element} onChange={e => handleMatriz(e, element, index)}/>
             ))}
             <BtnAdd variant="contained" type='button' onClick={handleAddLine} >
               <FaPlus color="black" size={20} />

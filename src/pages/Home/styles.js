@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { TextField } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 export const Container = styled.div`
   display: flex;
@@ -41,6 +41,12 @@ export const Entrada = styled.div`
   p {
     margin-bottom: 15px;
   }
+
+  div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
 `;
 
 export const Saida = styled.div`
@@ -49,6 +55,13 @@ export const Saida = styled.div`
   flex-direction: column;
 `;
 
-export const Input = styled(TextField)`
-  width: 60%;
+export const Input = styled(TextField)``;
+
+export const BtnAdd = styled(Button)`
+  height: 35px;
+  width: 30px;
+`;
+
+export const Btn = styled(Button)`
+  width: 100px;
 `;

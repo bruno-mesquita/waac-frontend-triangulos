@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Button } from '@material-ui/core';
+import { FaPlus } from 'react-icons/fa';
 
-import { Container, Paper, Entrada, Saida, Input } from './styles';
+import { Container, Paper, Entrada, Saida, Input, Btn, BtnAdd } from './styles';
 
 export default function Home() {
   return (
@@ -19,11 +19,16 @@ export default function Home() {
             Exemplo: [[6],[3,5],[9,7,1],[4,6,8,4]], cada prosição da matriz deve
             ser inserida em uma linha.
           </p>
+          <div>
+            <Input label="Linha 1" placeholder="Exemplo: 6" />
+            <BtnAdd variant="contained">
+              <FaPlus color="black" size={20} />
+            </BtnAdd>
+          </div>
 
-          <Input label="Linha 1" placeholder="Exemplo: 6" />
-          <Button variant="contained" color="primary">
+          <Btn variant="contained" color="primary">
             Calcular
-          </Button>
+          </Btn>
         </Entrada>
         <Saida>
           <h1>Resultado</h1>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { FaPlus } from 'react-icons/fa';
 import Line from '../../components/Line';
@@ -7,6 +7,13 @@ import { Container, Paper, Entrada, Saida, Btn, BtnAdd } from './styles';
 export default function Home() {
   // States
   const [lines, setLines] = useState([[6], [3, 5], [9, 7, 1], [4, 6, 8, 4]]);
+
+  // Add Line
+  const handleAdd = useCallback(() => {
+    setLines([...lines, []]);
+  }, [lines]);
+
+  console.log(lines);
 
   return (
     <Container>
@@ -26,7 +33,7 @@ export default function Home() {
             {lines.map((e, i) => (
               <Line key={e} label={`Linha ${i + 1}`} placeholder={e} />
             ))}
-            <BtnAdd variant="contained">
+            <BtnAdd variant="contained" onClick={handleAdd}>
               <FaPlus color="black" size={20} />
             </BtnAdd>
           </div>

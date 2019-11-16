@@ -42,9 +42,16 @@ export const Entrada = styled.form`
     margin-bottom: 15px;
   }
 
-  div {
+  div.lines {
     display: flex;
     flex-direction: column;
+  }
+
+  div.btnIcons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
   }
 `;
 
@@ -69,9 +76,9 @@ export const Saida = styled.div`
   }
 `;
 
-export const BtnAdd = styled(Button)`
+export const BtnIcon = styled(Button)`
   height: 25px;
-  margin: 10px;
+  width: 150px;
 `;
 
 export const Btn = styled(Button)`

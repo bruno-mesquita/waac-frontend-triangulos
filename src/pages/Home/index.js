@@ -19,7 +19,6 @@ export default function Home() {
   const [matriz, setMatriz] = useState([[6], [3, 5], [9, 7, 1], [4, 6, 8, 4]]);
   const [selected, setSelected] = useState([]);
   const [sum, setSum] = useState();
-  const [setTime] = useState();
 
   // funciona como o ComponentDidMount na classe, chamado toda vez que o componente é construido.
   useEffect(() => {
@@ -74,14 +73,13 @@ export default function Home() {
 
       setMatriz(triangle.content);
       setSum(triangle.result);
-      setTime(triangle.time);
       setSelected(triangle.selected);
 
       localStorage.setItem('Matriz', JSON.stringify(triangle.content));
       localStorage.setItem('Sum', JSON.stringify(triangle.result));
       localStorage.setItem('Selected', JSON.stringify(triangle.selected));
     },
-    [matriz, setTime]
+    [matriz]
   );
 
   return (
@@ -105,6 +103,7 @@ export default function Home() {
               {matriz.map((element, index) => (
                 <li>
                   <Input
+                    placeholder={element}
                     key={element[0].toString()}
                     onChange={e => handleMatriz(e, index)}
                     defaultValue=""

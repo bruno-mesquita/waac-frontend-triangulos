@@ -8,7 +8,7 @@ import {
   Entrada,
   Saida,
   Btn,
-  BtnIcon,
+  // BtnIcon,
   Triangulo,
 } from './styles';
 
@@ -19,7 +19,7 @@ export default function Home() {
   const [matriz, setMatriz] = useState([[6], [3, 5], [9, 7, 1], [4, 6, 8, 4]]);
   const [selected, setSelected] = useState([]);
   const [sum, setSum] = useState();
-  const [time, setTime] = useState();
+  const [setTime] = useState();
 
   // funciona como o ComponentDidMount na classe, chamado toda vez que o componente é construido.
   useEffect(() => {
@@ -41,27 +41,26 @@ export default function Home() {
   }, []);
 
   // Remove Line -- Função com Bugs -- Inativa
-  const handleRemoveLine = useCallback(() => {
-    const newMatriz = matriz;
-    newMatriz.splice(matriz.length - 1, 1);
-    setMatriz(newMatriz);
-    console.log(matriz);
-  }, [matriz]);
+  // const handleRemoveLine = useCallback(() => {
+  //  const newMatriz = matriz;
+  //  newMatriz.splice(matriz.length - 1, 1);
+  //  setMatriz(newMatriz);
+  //  console.log(matriz);
+  // }, [matriz]);
 
   // Add Line  -- Função com Bugs -- Inativa
-  const handleAddLine = useCallback(() => {
-    setMatriz([...matriz, []]);
-  }, [matriz]);
+  // const handleAddLine = useCallback(() => {
+  //  setMatriz([...matriz, []]);
+  // }, [matriz]);
 
   // handleMatriz
   const handleMatriz = useCallback(
     (evt, pos) => {
-      const { value } = evt.target;
+      const { value } = evt.target; // Pegando o evento digitado pelo usuario
       const array = value.split('').map(item => Number(item)); // Converte todo array para o tipo number.
       const newMatriz = matriz;
       newMatriz.splice(pos, 1, array); // substitui os elementos no array pelos novos inseridos.
       setMatriz(newMatriz);
-      console.log(matriz);
     },
     [matriz]
   );
@@ -82,7 +81,7 @@ export default function Home() {
       localStorage.setItem('Sum', JSON.stringify(triangle.result));
       localStorage.setItem('Selected', JSON.stringify(triangle.selected));
     },
-    [matriz]
+    [matriz, setTime]
   );
 
   return (
@@ -96,8 +95,10 @@ export default function Home() {
             cima para baixo.
           </p>
           <p>
-            Exemplo: [[6],[3,5],[9,7,1],[4,6,8,4]], cada posição da matriz deve
-            ser inserida em cada linha.(sem vírgula)
+            Cada linha da matriz deve ser inserida em cada linha.(sem vírgula).
+            <br />
+            Cada linha deve conter o número de elementos dado pela linha.
+            Exemplo: linha 1: 2, linha 2: 45
           </p>
           <div className="lines">
             <ol>

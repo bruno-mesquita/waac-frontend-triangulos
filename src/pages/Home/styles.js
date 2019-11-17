@@ -45,6 +45,10 @@ export const Entrada = styled.form`
   div.lines {
     display: flex;
     flex-direction: column;
+
+    ol {
+      padding-left: 15px;
+    }
   }
 
   div.btnIcons {

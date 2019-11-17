@@ -61,10 +61,10 @@ export default function Home() {
       const newMatriz = matriz;
       newMatriz.splice(pos, 1, array); // substitui os elementos no array pelos novos inseridos.
       setMatriz(newMatriz);
+      console.log(matriz);
     },
     [matriz]
   );
-  console.log(matriz);
 
   // Submit
   const handleSubmit = useCallback(
@@ -100,13 +100,17 @@ export default function Home() {
             ser inserida em cada linha.(sem vírgula)
           </p>
           <div className="lines">
-            {matriz.map((element, index) => (
-              <Input
-                key={element[0]}
-                placeholder={element}
-                onChange={e => handleMatriz(e, index)}
-              />
-            ))}
+            <ol>
+              {matriz.map((element, index) => (
+                <li>
+                  <Input
+                    key={element[0].toString()}
+                    onChange={e => handleMatriz(e, index)}
+                    defaultValue=""
+                  />
+                </li>
+              ))}
+            </ol>
           </div>
           {/* <div className="btnIcons">
             <BtnIcon variant="contained" type="button" onClick={handleAddLine}>
@@ -130,13 +134,36 @@ export default function Home() {
           {matriz.map(item => (
             <Triangulo>
               {item.map(i => (
-                <span key={i}>{i}</span>
+                <span>{i}</span>
               ))}
             </Triangulo>
           ))}
           <span>Tempo de Execução: 2.4ms</span>
+          <span>
+            Matriz:{' '}
+            {matriz.map((itens, index) => (
+              <>
+                [
+                {itens.map((item, pos) => (
+                  <>
+                    {item}
+                    {itens.length - 1 === pos ? '' : ', '}
+                  </>
+                ))}
+                ]{matriz.length - 1 === index ? ' ' : ', '}
+              </>
+            ))}
+          </span>
+          <span>
+            Números Selecionados:{' '}
+            {selected.map((i, p) => (
+              <>
+                {i}
+                {selected.length - 1 === p ? '' : ', '}
+              </>
+            ))}
+          </span>
           <span>Soma: {sum || 'Sem Soma'}</span>
-          <span>Números Selecionados: {selected}</span>
         </Saida>
       </Paper>
     </Container>
